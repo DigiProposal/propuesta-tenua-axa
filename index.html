@@ -10,26 +10,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: TENUA Corporate Blue -->
-    <!-- Application Structure Plan: A single-page application with a fixed navigation bar for easy access to key sections. The structure flows from identifying the market problem ("La Oportunidad"), presenting TENUA's services ("Nuestra Solución"), detailing the process ("Modelo de Atención"), visualizing investment with an interactive chart ("Planes y Tarifas"), and closing with clear benefits and next steps ("Beneficios y Colaboración"). This structure transforms a linear presentation into an exploratory dashboard, allowing decision-makers to access information non-linearly and engage directly with the data (pricing), which is more persuasive than a static document. -->
+    <!-- Application Structure Plan: A single-page application with a fixed navigation bar for easy access to key sections. The structure flows from "Contexto Clínico" (Dr. Osorio's observations), "La Oportunidad" (market problem), "Nuestra Solución" (TENUA's services & value proposition, including geographic scope), "Modelo de Atención" (process), "Planes y Tarifas" (updated packages and pricing), and closing with "Beneficios AXA" and "Colaboración" (next steps). This structure provides a comprehensive narrative, guiding the user from problem identification to a clear call to action, enhancing understanding and engagement. -->
     <!-- Visualization & Content Choices: 
-        - Report Info: Tarifas del Servicio -> Goal: Compare/Inform -> Viz: Interactive Radio Buttons for plan selection -> Interaction: User selects a plan, a summary text updates. -> Justification: Makes pricing tangible and allows for quick comparison. (Chart removed as per request)
-        - Report Info: Modelo de Atención -> Goal: Organize/Inform -> Viz: Numbered Step-by-Step Diagram (HTML/Tailwind) -> Interaction: Clear visual flow, no clicks needed. -> Justification: Simplifies a complex process into easily digestible steps, superior to a bulleted list.
-        - Report Info: Tipos de Casos Atendidos -> Goal: Organize/Inform -> Viz: Interactive Cards (HTML/Tailwind/JS) -> Interaction: Clicking a card reveals a brief description and connects to the case study. -> Justification: Organizes diverse services cleanly and links them to a real-world example (Sr. Luis), making the service's impact more concrete.
+        - Report Info: Tarifas del Servicio -> Goal: Compare/Inform -> Viz: Interactive Radio Buttons for plan selection -> Interaction: User selects a plan. -> Justification: Makes pricing tangible and allows for quick comparison.
+        - Report Info: Modelo de Atención -> Goal: Organize/Inform -> Viz: Numbered Step-by-Step Diagram (HTML/Tailwind) -> Interaction: Clear visual flow. -> Justification: Simplifies a complex process.
+        - Report Info: Tipos de Casos Atendidos -> Goal: Organize/Inform -> Viz: Interactive Cards (HTML/Tailwind/JS) -> Interaction: Clicking a card reveals a brief description. -> Justification: Organizes diverse services cleanly.
+        - Report Info: Alcance Geográfico -> Goal: Inform -> Viz: List/Map-like text (HTML/Tailwind) -> Interaction: None. -> Justification: Clearly presents coverage areas.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* .chart-container class is no longer used for a chart, but can be repurposed if needed for other visualizations */
         .nav-link {
             transition: color 0.3s, border-bottom-color 0.3s;
         }
-        .nav-link:hover, .active-link { /* Combined hover and active for teal color */
-            color: #0d9488; /* Teal color for hover and active state text */
+        .nav-link:hover, .active-link {
+            color: #0d9488; 
         }
         .active-link {
-            border-bottom: 2px solid #0d9488; /* Teal border for active link */
+            border-bottom: 2px solid #0d9488;
         }
         .card {
             transition: transform 0.3s, box-shadow 0.3s;
@@ -38,6 +38,7 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
+        /* .section-icon class is no longer used */
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -47,83 +48,123 @@
             <div class="flex items-center space-x-3">
                 <img src="https://ik.imagekit.io/50wnllxkw/Recurso-2fastx.png?updatedAt=1748996121775" alt="Logo TENUA" class="h-10">
             </div>
-            <div class="hidden md:flex space-x-8">
-                <a href="#oportunidad" class="nav-link text-gray-200 font-medium pb-1">La Oportunidad</a>
-                <a href="#solucion" class="nav-link text-gray-200 font-medium pb-1">Nuestra Solución</a>
-                <a href="#modelo" class="nav-link text-gray-200 font-medium pb-1">Modelo de Atención</a>
-                <a href="#tarifas" class="nav-link text-gray-200 font-medium pb-1">Planes y Tarifas</a>
-                <a href="#beneficios" class="nav-link text-gray-200 font-medium pb-1">Beneficios AXA</a>
-                <a href="#colaboracion" class="nav-link text-gray-200 font-medium pb-1">Colaboración</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#contexto" class="nav-link text-gray-200 font-medium pb-1 text-sm">Contexto</a>
+                <a href="#oportunidad" class="nav-link text-gray-200 font-medium pb-1 text-sm">Oportunidad</a>
+                <a href="#solucion" class="nav-link text-gray-200 font-medium pb-1 text-sm">Solución TENUA</a>
+                <a href="#modelo" class="nav-link text-gray-200 font-medium pb-1 text-sm">Modelo</a>
+                <a href="#tarifas" class="nav-link text-gray-200 font-medium pb-1 text-sm">Planes</a>
+                <a href="#beneficios" class="nav-link text-gray-200 font-medium pb-1 text-sm">Beneficios AXA</a>
+                <a href="#colaboracion" class="nav-link text-gray-200 font-medium pb-1 text-sm">Colaboración</a>
             </div>
-            <a href="#colaboracion" class="hidden md:block bg-teal-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-teal-700 transition-colors">Contactar</a>
+            <a href="#colaboracion" class="hidden md:block bg-teal-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-teal-700 transition-colors text-sm">Contactar</a>
         </nav>
     </header>
 
     <main>
-        <section id="hero" class="bg-white py-20 md:py-32">
+        <section id="hero" class="bg-white py-20 md:py-28">
             <div class="container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-6xl font-bold text-gray-800 leading-tight">
-                    Una Alianza Estratégica para la <span class="text-teal-600">Rehabilitación a Domicilio</span>
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
+                    Propuesta de Paquetes de <span class="text-teal-600">Fisioterapia Domiciliaria</span>
                 </h1>
                 <p class="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-                    Propuesta de colaboración del Centro de Rehabilitación Especializada TENUA para los asegurados de AXA Panamá.
+                    Centro de Rehabilitación Especializada TENUA: Mejorando la recuperación y calidad de vida de los asegurados de AXA Panamá.
                 </p>
-                <a href="#oportunidad" class="mt-8 inline-block bg-teal-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-teal-700 transition-colors">
-                    Explorar Propuesta
+                <a href="#contexto" class="mt-8 inline-block bg-teal-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-teal-700 transition-colors">
+                    Conocer la Propuesta
                 </a>
             </div>
         </section>
 
-        <section id="oportunidad" class="py-20">
+        <section id="contexto" class="py-16 bg-teal-50">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold">La Problemática y la Oportunidad</h2>
-                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Identificamos desafíos clave en la atención post-hospitalaria y geriátrica que representan una oportunidad para mejorar la calidad del servicio y optimizar costos para AXA.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[#0e434b] pt-4">Contexto y Observaciones Clínicas</h2>
+                </div>
+                <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        El <strong class="text-[#0e434b]">Dr. Juan Osorio</strong>, especialista en Ortopedia y Traumatología y líder de TENUA, a través de su experiencia diaria en <strong class="text-teal-600">The Panamá Clinic</strong>, ha observado directamente a pacientes asegurados por AXA. Muchos de ellos, hospitalizados y en su mayoría adultos mayores o con cuadros crónicos, presentan necesidades evidentes de rehabilitación física durante o posterior a su manejo intrahospitalario.
+                    </p>
+                    <p class="mt-4 text-lg text-gray-700 leading-relaxed">
+                        Estos pacientes requieren un proceso estructurado y continuo de fisioterapia para evitar el deterioro funcional, facilitar su reintegración a la vida diaria y reducir significativamente el riesgo de reingresos hospitalarios.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="oportunidad" class="py-16">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold pt-4">La Problemática Actual y la Oportunidad</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">La atención de estos pacientes presenta desafíos que podemos convertir en oportunidades de mejora y eficiencia.</p>
                 </div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <h3 class="font-bold text-lg text-teal-700">Limitaciones Funcionales</h3>
-                        <p class="mt-2 text-gray-600">Alta incidencia de adultos mayores con movilidad reducida que requieren atención continua para mantener su independencia.</p>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <h3 class="font-semibold text-lg text-teal-700">Deterioro Funcional</h3>
+                        <p class="mt-2 text-gray-600">Pacientes hospitalizados, especialmente adultos mayores, pueden sufrir una rápida pérdida de funcionalidad si no reciben rehabilitación temprana.</p>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <h3 class="font-bold text-lg text-teal-700">Dificultad de Traslado</h3>
-                        <p class="mt-2 text-gray-600">Pacientes con dependencia funcional enfrentan barreras logísticas y físicas para asistir a centros de terapia, afectando su adherencia.</p>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <h3 class="font-semibold text-lg text-teal-700">Transición al Hogar</h3>
+                        <p class="mt-2 text-gray-600">La falta de un plan de fisioterapia continuo post-alta dificulta la reintegración y aumenta la dependencia.</p>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <h3 class="font-bold text-lg text-teal-700">Riesgo de Complicaciones</h3>
-                        <p class="mt-2 text-gray-600">La inmovilidad prolongada y la falta de terapia aumentan el riesgo de caídas, reingresos hospitalarios y deterioro funcional.</p>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <h3 class="font-semibold text-lg text-teal-700">Riesgo de Reingresos</h3>
+                        <p class="mt-2 text-gray-600">Una recuperación incompleta o complicaciones por falta de seguimiento incrementan la probabilidad de nuevas hospitalizaciones.</p>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <h3 class="font-bold text-lg text-teal-700">Falta de Continuidad</h3>
-                        <p class="mt-2 text-gray-600">La transición del hospital al hogar a menudo carece de un plan terapéutico continuo, resultando en recuperaciones más lentas.</p>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <h3 class="font-semibold text-lg text-teal-700">Control de Costos</h3>
+                        <p class="mt-2 text-gray-600">La atención reactiva y los reingresos generan costos significativos que pueden optimizarse con un enfoque proactivo.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="solucion" class="py-20 bg-white">
+        <section id="solucion" class="py-16 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold">Nuestra Solución: Atención Especializada en Casa</h2>
-                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Ofrecemos un servicio de rehabilitación integral a domicilio, diseñado para superar las barreras actuales y entregar resultados medibles tanto para el paciente como para AXA.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold pt-4">Nuestra Solución: Propuesta de Valor TENUA</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Desde el Centro TENUA, proponemos un modelo organizado de paquetes de fisioterapia a domicilio, diseñado para AXA, que asegura continuidad de cuidados con eficiencia, trazabilidad y resultados clínicos claros.</p>
                 </div>
-                <h3 class="text-xl font-bold text-center mb-8">Tipos de Casos Atendidos</h3>
+                <div class="grid md:grid-cols-2 gap-8 items-start">
+                    <div class="bg-teal-50 p-6 rounded-lg border border-teal-200">
+                        <h3 class="font-bold text-xl text-[#0e434b] mb-3">Beneficios del Modelo Empaquetado:</h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start"><span class="text-teal-600 mr-2 mt-1 font-bold">&bull;</span><span><strong>Mejor control de costos y orden en la facturación:</strong> Paquetes predefinidos simplifican la gestión administrativa.</span></li>
+                            <li class="flex items-start"><span class="text-teal-600 mr-2 mt-1 font-bold">&bull;</span><span><strong>Entrega sistemática de reportes clínicos y seguimiento funcional:</strong> Trazabilidad completa del progreso del paciente.</span></li>
+                            <li class="flex items-start"><span class="text-teal-600 mr-2 mt-1 font-bold">&bull;</span><span><strong>Identificación temprana de anomalías o complicaciones:</strong> Intervención proactiva durante el proceso de rehabilitación.</span></li>
+                            <li class="flex items-start"><span class="text-teal-600 mr-2 mt-1 font-bold">&bull;</span><span><strong>Diseño de planes de transición:</strong> Cuando se detecta dependencia física persistente, se elaboran estrategias de manejo a largo plazo.</span></li>
+                        </ul>
+                    </div>
+                     <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                        <h3 class="font-bold text-xl text-[#0e434b] mb-4">Alcance Geográfico Operativo:</h3>
+                        <p class="text-gray-700 mb-4">Centro TENUA cuenta con la capacidad operativa para cubrir zonas clave de atención domiciliaria en:</p>
+                        <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-gray-600">
+                            <span>Panamá Norte</span>
+                            <span>Panamá Oeste</span>
+                            <span>Panamá Este</span>
+                            <span>Ciudad de Panamá</span>
+                            <span class="col-span-2">Colón</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold text-center mt-16 mb-8 text-[#0e434b]">Tipos de Casos que Atendemos</h3>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="card bg-gray-50 p-6 rounded-lg border border-gray-200 cursor-pointer" data-case="ortopedica">
-                        <h4 class="font-bold text-lg">Recuperación Postoperatoria</h4>
-                        <p class="text-sm mt-2 text-gray-600">Fisioterapia para reemplazos de cadera, rodilla y otras cirugías ortopédicas.</p>
+                        <h4 class="font-semibold text-lg">Recuperación Postoperatoria</h4>
+                        <p class="text-sm mt-2 text-gray-600">Cirugías ortopédicas (cadera, rodilla, etc.).</p>
                     </div>
                     <div class="card bg-gray-50 p-6 rounded-lg border border-gray-200 cursor-pointer" data-case="neurologica">
-                        <h4 class="font-bold text-lg">Secuelas Neurológicas</h4>
-                        <p class="text-sm mt-2 text-gray-600">Rehabilitación post-ACV y manejo de enfermedades como Parkinson.</p>
+                        <h4 class="font-semibold text-lg">Secuelas Neurológicas</h4>
+                        <p class="text-sm mt-2 text-gray-600">Post-ACV, Parkinson, entre otras.</p>
                     </div>
                     <div class="card bg-gray-50 p-6 rounded-lg border border-gray-200 cursor-pointer" data-case="dolor">
-                        <h4 class="font-bold text-lg">Dolor Crónico y Artrosis</h4>
-                        <p class="text-sm mt-2 text-gray-600">Manejo de la debilidad muscular por inactividad y condiciones degenerativas.</p>
+                        <h4 class="font-semibold text-lg">Dolor Crónico y Artrosis</h4>
+                        <p class="text-sm mt-2 text-gray-600">Manejo de debilidad y condiciones degenerativas.</p>
                     </div>
                     <div class="card bg-gray-50 p-6 rounded-lg border border-gray-200 cursor-pointer" data-case="geriatrica">
-                        <h4 class="font-bold text-lg">Dependencia Geriátrica</h4>
-                        <p class="text-sm mt-2 text-gray-600">Programas para mantener y mejorar la funcionalidad en el adulto mayor.</p>
+                        <h4 class="font-semibold text-lg">Dependencia Geriátrica</h4>
+                        <p class="text-sm mt-2 text-gray-600">Programas para funcionalidad en adultos mayores.</p>
                     </div>
                 </div>
                 <div id="case-details" class="mt-8 bg-teal-50 p-6 rounded-lg border border-teal-200 hidden">
@@ -133,60 +174,60 @@
             </div>
         </section>
 
-        <section id="modelo" class="py-20">
+        <section id="modelo" class="py-16 bg-teal-50">
             <div class="container mx-auto px-6">
                  <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold">Nuestro Modelo de Atención</h2>
-                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Hemos desarrollado un proceso clínico riguroso y coordinado para garantizar la máxima calidad y efectividad en cada etapa del tratamiento.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[#0e434b] pt-4">Nuestro Modelo de Atención Domiciliaria</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Un proceso estructurado para garantizar la calidad y coordinación del cuidado.</p>
                 </div>
                 <div class="relative">
-                    <div class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 hidden md:block" aria-hidden="true"></div>
+                    <div class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-300 hidden md:block" aria-hidden="true"></div>
                     <div class="space-y-12 md:space-y-0">
                         <div class="flex flex-col md:flex-row items-center">
                            <div class="md:w-5/12">
-                               <div class="p-6 bg-white rounded-lg shadow-md">
-                                   <h3 class="font-bold text-xl text-teal-700">1. Valoración Inicial Integral</h3>
-                                   <p class="mt-2 text-gray-600">Según la Orden del Médico Tratante se envía un fisioterapeuta especializado que evalúa al paciente en su hogar para entender su condición, entorno y objetivos.</p>
+                               <div class="p-6 bg-white rounded-lg shadow-lg">
+                                   <h3 class="font-semibold text-xl text-teal-700">1. Valoración Inicial Integral</h3>
+                                   <p class="mt-2 text-gray-600">Según la Orden del Médico Tratante, un fisioterapeuta especializado de TENUA evalúa al paciente en su hogar para entender su condición, entorno y establecer objetivos terapéuticos claros.</p>
                                </div>
                            </div>
                            <div class="hidden md:flex w-2/12 justify-center">
-                               <div class="w-4 h-4 bg-teal-600 rounded-full shadow-lg"></div>
+                               <div class="w-5 h-5 bg-teal-600 rounded-full shadow-xl border-2 border-white"></div>
                            </div>
                            <div class="md:w-5/12"></div>
                         </div>
                         <div class="flex flex-col md:flex-row items-center">
                             <div class="md:w-5/12 order-1 md:order-3">
-                                <div class="p-6 bg-white rounded-lg shadow-md">
-                                    <h3 class="font-bold text-xl text-teal-700">2. Plan Terapéutico Personalizado</h3>
-                                    <p class="mt-2 text-gray-600">Diseñamos un plan de tratamiento individualizado, con metas claras y realistas, enfocado en la recuperación funcional.</p>
+                                <div class="p-6 bg-white rounded-lg shadow-lg">
+                                    <h3 class="font-semibold text-xl text-teal-700">2. Plan Terapéutico Personalizado</h3>
+                                    <p class="mt-2 text-gray-600">Se diseña un plan de tratamiento individualizado, con metas SMART (Específicas, Medibles, Alcanzables, Relevantes, con Plazo), enfocado en la recuperación funcional y las necesidades del paciente.</p>
                                 </div>
                             </div>
                             <div class="hidden md:flex w-2/12 justify-center order-2">
-                                <div class="w-4 h-4 bg-teal-600 rounded-full shadow-lg"></div>
+                               <div class="w-5 h-5 bg-teal-600 rounded-full shadow-xl border-2 border-white"></div>
                             </div>
                             <div class="md:w-5/12 order-3 md:order-1"></div>
                         </div>
                         <div class="flex flex-col md:flex-row items-center">
                             <div class="md:w-5/12">
-                                <div class="p-6 bg-white rounded-lg shadow-md">
-                                    <h3 class="font-bold text-xl text-teal-700">3. Aplicación y Seguimiento</h3>
-                                    <p class="mt-2 text-gray-600">Ejecutamos las sesiones de terapia con equipos portátiles avanzados y monitoreamos el progreso continuamente.</p>
+                                <div class="p-6 bg-white rounded-lg shadow-lg">
+                                    <h3 class="font-semibold text-xl text-teal-700">3. Aplicación y Seguimiento Continuo</h3>
+                                    <p class="mt-2 text-gray-600">Se ejecutan las sesiones de fisioterapia programadas, utilizando equipos portátiles y técnicas avanzadas. El progreso del paciente es monitoreado continuamente.</p>
                                 </div>
                             </div>
                             <div class="hidden md:flex w-2/12 justify-center">
-                                <div class="w-4 h-4 bg-teal-600 rounded-full shadow-lg"></div>
+                               <div class="w-5 h-5 bg-teal-600 rounded-full shadow-xl border-2 border-white"></div>
                             </div>
                             <div class="md:w-5/12"></div>
                         </div>
                         <div class="flex flex-col md:flex-row items-center">
                              <div class="md:w-5/12 order-1 md:order-3">
-                                <div class="p-6 bg-white rounded-lg shadow-md">
-                                    <h3 class="font-bold text-xl text-teal-700">4. Coordinación y Reportes</h3>
-                                    <p class="mt-2 text-gray-600">Mantenemos comunicación constante con el médico tratante y AXA, proveyendo reportes de evolución claros y periódicos.</p>
+                                <div class="p-6 bg-white rounded-lg shadow-lg">
+                                    <h3 class="font-semibold text-xl text-teal-700">4. Coordinación y Reportes Finales</h3>
+                                    <p class="mt-2 text-gray-600">Se mantiene comunicación constante con el médico tratante. Al finalizar el paquete, se entrega un reporte final detallado a AXA y/o al médico, resumiendo la evolución y logros.</p>
                                 </div>
                             </div>
                             <div class="hidden md:flex w-2/12 justify-center order-2">
-                                <div class="w-4 h-4 bg-teal-600 rounded-full shadow-lg"></div>
+                               <div class="w-5 h-5 bg-teal-600 rounded-full shadow-xl border-2 border-white"></div>
                             </div>
                             <div class="md:w-5/12 order-3 md:order-1"></div>
                         </div>
@@ -195,84 +236,80 @@
             </div>
         </section>
 
-        <section id="tarifas" class="py-20 bg-white">
+        <section id="tarifas" class="py-16 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold">Planes y Tarifas</h2>
-                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Ofrecemos planes flexibles y transparentes, diseñados para adaptarse a las distintas necesidades de los pacientes y apoyar los objetivos de contención de costos de AXA.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold pt-4">Paquetes de Fisioterapia Domiciliaria</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Formatos sugeridos, diseñados para adaptarse a la condición clínica del paciente. Cada paquete incluye evaluación funcional inicial y final, planificación de sesiones, seguimiento por el fisioterapeuta, y un reporte final para AXA o el médico tratante.</p>
                 </div>
-                <div class="flex flex-col items-center">
-                    <div id="plan-selector" class="w-full max-w-md space-y-4">
-                        <label class="block p-6 border rounded-lg cursor-pointer bg-gray-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-400">
-                            <input type="radio" name="plan" value="0" class="sr-only" checked>
-                            <div class="flex justify-between items-center">
-                                <h4 class="font-bold text-lg">Plan Básico</h4>
-                                <span class="font-bold text-xl text-teal-700">$XXX</span>
-                            </div>
-                            <p class="text-sm mt-1 text-gray-600">4 Sesiones de Fisioterapia/mes. Ideal para seguimiento y mantenimiento funcional.</p>
-                        </label>
-                        <label class="block p-6 border rounded-lg cursor-pointer bg-gray-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-400">
-                            <input type="radio" name="plan" value="1" class="sr-only">
-                             <div class="flex justify-between items-center">
-                                <h4 class="font-bold text-lg">Plan Estándar</h4>
-                                <span class="font-bold text-xl text-teal-700">$XXX</span>
-                            </div>
-                            <p class="text-sm mt-1 text-gray-600">8 Sesiones de Fisioterapia/mes. Para rehabilitación post-evento agudo.</p>
-                        </label>
-                        <label class="block p-6 border rounded-lg cursor-pointer bg-gray-50 has-[:checked]:bg-teal-50 has-[:checked]:border-teal-400">
-                            <input type="radio" name="plan" value="2" class="sr-only">
-                            <div class="flex justify-between items-center">
-                                <h4 class="font-bold text-lg">Plan Intensivo</h4>
-                                <span class="font-bold text-xl text-teal-700">$XXX</span>
-                            </div>
-                            <p class="text-sm mt-1 text-gray-600">12 Sesiones de Fisioterapia/mes. Casos de alta dependencia o recuperación intensiva.</p>
-                        </label>
+                <div class="flex flex-col md:flex-row justify-center gap-8">
+                    <div class="w-full md:w-1/3 bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-lg hover:shadow-2xl transition-shadow">
+                        <h4 class="font-bold text-xl text-center text-teal-700 mb-2">Paquete Básico</h4>
+                        <p class="text-4xl font-bold text-center text-[#0e434b] mb-4">$390</p>
+                        <p class="text-center text-gray-600 mb-1 font-semibold">4 Sesiones de Fisioterapia</p>
+                        <p class="text-sm text-center text-gray-500">Ideal para seguimiento, mantenimiento funcional o casos de menor complejidad.</p>
                     </div>
-                     <p class="mt-8 text-sm text-gray-500 text-center">* Todos los planes incluyen evaluación inicial y coordinación con el médico tratante.</p>
+                    <div class="w-full md:w-1/3 bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-lg hover:shadow-2xl transition-shadow">
+                        <h4 class="font-bold text-xl text-center text-teal-700 mb-2 mt-3">Paquete Estándar</h4>
+                        <p class="text-4xl font-bold text-center text-[#0e434b] mb-4">$745</p>
+                        <p class="text-center text-gray-600 mb-1 font-semibold">8 Sesiones de Fisioterapia</p>
+                        <p class="text-sm text-center text-gray-500">Recomendado para rehabilitación post-evento agudo o condiciones moderadas.</p>
+                    </div>
+                    <div class="w-full md:w-1/3 bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-lg hover:shadow-2xl transition-shadow">
+                        <h4 class="font-bold text-xl text-center text-teal-700 mb-2">Paquete Avanzado</h4>
+                        <p class="text-4xl font-bold text-center text-[#0e434b] mb-4">$1050</p>
+                        <p class="text-center text-gray-600 mb-1 font-semibold">12 Sesiones de Fisioterapia</p>
+                        <p class="text-sm text-center text-gray-500">Para casos de alta dependencia, recuperación intensiva o condiciones complejas.</p>
+                    </div>
                 </div>
+                 <p class="mt-10 text-sm text-gray-500 text-center italic">Los precios son referenciales y pueden ajustarse según las necesidades específicas que AXA plantee.</p>
             </div>
         </section>
 
-        <section id="beneficios" class="py-20">
+        <section id="beneficios" class="py-16 bg-teal-50">
              <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold">Resultados y Beneficios para AXA</h2>
-                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Nuestra alianza genera valor tangible, mejorando la salud de los asegurados y fortaleciendo el modelo de negocio de AXA.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[#0e434b] pt-4">Resultados y Beneficios Clave</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Nuestra alianza genera valor tangible para los asegurados y para AXA.</p>
                 </div>
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-white p-8 rounded-lg shadow-md">
-                        <h3 class="font-bold text-xl mb-4">Resultados Esperados para el Paciente</h3>
-                        <ul class="space-y-3 text-gray-600">
-                            <li class="flex items-start"><span class="text-teal-500 mr-3 mt-1">&#10003;</span><span>Mejora significativa del estado funcional y la movilidad general.</span></li>
-                            <li class="flex items-start"><span class="text-teal-500 mr-3 mt-1">&#10003;</span><span>Reducción de eventos de caída y del deterioro progresivo.</span></li>
-                            <li class="flex items-start"><span class="text-teal-500 mr-3 mt-1">&#10003;</span><span>Alta satisfacción del paciente y sus familiares con el servicio recibido.</span></li>
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="font-semibold text-xl mb-4 text-teal-700">Para el Paciente Asegurado:</h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start"><span class="text-teal-600 mr-2 mt-1 font-bold">&bull;</span><span>Mejora significativa del estado funcional y la movilidad general.</span></li>
+                            <li class="flex items-start"><span class="text-teal-600 mr-2 mt-1 font-bold">&bull;</span><span>Reducción de eventos de caída y del deterioro progresivo.</span></li>
+                            <li class="flex items-start"><span class="text-teal-600 mr-2 mt-1 font-bold">&bull;</span><span>Mayor independencia y calidad de vida en su propio hogar.</span></li>
+                            <li class="flex items-start"><span class="text-teal-600 mr-2 mt-1 font-bold">&bull;</span><span>Alta satisfacción del paciente y sus familiares con un servicio personalizado y continuo.</span></li>
                         </ul>
                     </div>
-                    <div class="bg-white p-8 rounded-lg shadow-md">
-                        <h3 class="font-bold text-xl mb-4">Beneficios Directos para AXA</h3>
-                        <ul class="space-y-3 text-gray-600">
-                             <li class="flex items-start"><span class="text-teal-500 mr-3 mt-1">&#10003;</span><span>Mejora de la experiencia del asegurado, especialmente post-hospitalización.</span></li>
-                             <li class="flex items-start"><span class="text-teal-500 mr-3 mt-1">&#10003;</span><span>Disminución en la frecuencia de siniestros por descompensaciones y caídas.</span></li>
-                             <li class="flex items-start"><span class="text-teal-500 mr-3 mt-1">&#10003;</span><span>Ahorros en costos médicos de mediana y alta complejidad a largo plazo.</span></li>
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="font-semibold text-xl mb-4 text-teal-700">Para AXA Panamá:</h3>
+                        <ul class="space-y-3 text-gray-700">
+                             <li class="flex items-start"><span class="text-teal-600 mr-2 mt-1 font-bold">&bull;</span><span>Mejora de la experiencia del asegurado, especialmente en la crucial etapa post-hospitalización.</span></li>
+                             <li class="flex items-start"><span class="text-teal-600 mr-2 mt-1 font-bold">&bull;</span><span>Disminución en la frecuencia de siniestros por descompensaciones funcionales y caídas.</span></li>
+                             <li class="flex items-start"><span class="text-teal-600 mr-2 mt-1 font-bold">&bull;</span><span>Optimización de costos médicos a mediano y largo plazo al reducir reingresos y complicaciones.</span></li>
+                             <li class="flex items-start"><span class="text-teal-600 mr-2 mt-1 font-bold">&bull;</span><span>Identificación temprana de anomalías y diseño de planes de transición para casos de dependencia persistente.</span></li>
+                             <li class="flex items-start"><span class="text-teal-600 mr-2 mt-1 font-bold">&bull;</span><span>Comunicación fluida y reportes clínicos sistemáticos para una gestión eficiente.</span></li>
                         </ul>
                     </div>
                 </div>
              </div>
         </section>
 
-         <section id="colaboracion" class="py-20 bg-teal-700 text-white">
+         <section id="colaboracion" class="py-20 bg-[#0e434b] text-white">
             <div class="container mx-auto px-6 text-center">
-                 <h2 class="text-3xl md:text-4xl font-bold">Propuesta de Colaboración</h2>
+                 <h2 class="text-3xl md:text-4xl font-bold pt-4">Próximo Paso: Hacia una Colaboración Exitosa</h2>
                 <p class="mt-4 text-teal-100 max-w-2xl mx-auto">En TENUA estamos listos para ser aliados estratégicos de AXA en el fortalecimiento de su modelo de atención domiciliaria.</p>
-                <div class="mt-12 bg-white/10 p-8 rounded-lg max-w-4xl mx-auto text-left">
-                    <h3 class="font-bold text-xl mb-6 text-center">Nuestros Pasos Propuestos</h3>
-                    <ol class="space-y-4">
-                        <li class="flex items-center"><span class="bg-white text-teal-700 font-bold rounded-full h-8 w-8 flex items-center justify-center mr-4">1</span><span>Iniciar con un <strong>piloto controlado</strong> con pacientes identificados por AXA para validar el modelo.</span></li>
-                        <li class="flex items-center"><span class="bg-white text-teal-700 font-bold rounded-full h-8 w-8 flex items-center justify-center mr-4">2</span><span>Realizar una <strong>evaluación conjunta</strong> de indicadores clínicos, de satisfacción y de costos.</span></li>
-                        <li class="flex items-center"><span class="bg-white text-teal-700 font-bold rounded-full h-8 w-8 flex items-center justify-center mr-4">3</span><span><strong>Escalar progresivamente</strong> el servicio a más asegurados según los resultados positivos del piloto.</span></li>
-                    </ol>
+                <div class="mt-10 bg-white/10 p-8 rounded-lg max-w-3xl mx-auto text-left shadow-xl">
+                    <h3 class="font-semibold text-xl mb-6 text-center text-teal-300">Nuestra Propuesta Inmediata:</h3>
+                    <p class="text-lg leading-relaxed text-gray-200">
+                        Solicitamos formalmente al <strong class="text-white">Dr. Arias</strong> y al equipo de AXA su valiosa retroalimentación sobre las necesidades actuales de la aseguradora en materia de rehabilitación domiciliaria.
+                    </p>
+                    <p class="mt-4 text-lg leading-relaxed text-gray-200">
+                        Esta información nos permitirá adaptar formalmente nuestros paquetes de servicios y presentar una propuesta de cotización concreta y detallada que se alinee perfectamente a sus estándares, procesos y objetivos.
+                    </p>
                 </div>
-                 <p class="mt-12 font-bold text-xl">¡Esperamos coordinar una reunión para avanzar en la implementación!</p>
+                 <p class="mt-12 font-bold text-xl text-teal-300">¡Esperamos coordinar una reunión para discutir esta oportunidad y avanzar en la implementación!</p>
             </div>
         </section>
     </main>
@@ -283,11 +320,13 @@
                  <img src="https://ik.imagekit.io/50wnllxkw/Recurso-2fastx.png?updatedAt=1748996121775" alt="Logo TENUA" class="h-10">
             </div>
             <p>San Francisco, Ciudad de Panamá</p>
-            <div class="mt-4 space-x-6">
+            <div class="mt-4 space-x-2 md:space-x-6 text-sm md:text-base">
                 <span>Tel: 238-0902 / 6761-3325</span>
-                <span>|</span>
+                <span class="hidden md:inline">|</span>
+                <br class="md:hidden">
                 <span>Email: info@centrotenua.com</span>
-                <span>|</span>
+                <span class="hidden md:inline">|</span>
+                <br class="md:hidden">
                 <span>Web: www.centrotenua.com</span>
             </div>
         </div>
@@ -327,6 +366,7 @@
                     caseTitle.textContent = info.title;
                     caseDescription.textContent = info.description;
                     caseDetailsContainer.classList.remove('hidden');
+                    caseDetailsContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 });
             });
             
@@ -335,26 +375,40 @@
 
             const observerOptions = {
                 root: null,
-                rootMargin: '0px',
-                threshold: 0.4 
+                rootMargin: '-50px 0px -50% 0px', 
+                threshold: 0.1
             };
 
-            const observer = new IntersectionObserver((entries, observer) => {
+            const observer = new IntersectionObserver((entries) => {
+                let lastVisibleSectionId = null;
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const link = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
-                        navLinks.forEach(l => l.classList.remove('active-link'));
-                        if (link) {
-                            link.classList.add('active-link');
-                        }
+                        lastVisibleSectionId = `#${entry.target.id}`;
                     }
                 });
+
+                navLinks.forEach(l => l.classList.remove('active-link', 'text-teal-400')); 
+                navLinks.forEach(l => l.classList.add('text-gray-200')); 
+
+                if (lastVisibleSectionId) {
+                    const activeLink = document.querySelector(`.nav-link[href="${lastVisibleSectionId}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active-link');
+                        activeLink.classList.remove('text-gray-200'); 
+                        activeLink.classList.add('text-teal-400'); 
+                    }
+                } else {
+                    const firstLink = document.querySelector('.nav-link');
+                     if (firstLink && window.scrollY < sections[0].offsetTop) {
+                        // No active link or specific logic for top of page
+                     }
+                }
+
             }, observerOptions);
 
             sections.forEach(section => {
                 observer.observe(section);
             });
-
         });
     </script>
 
